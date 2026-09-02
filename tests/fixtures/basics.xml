@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!ELEMENT HealthData (ExportDate,Me,(Record|Correlation|Workout|ActivitySummary|ClinicalRecord)*)>
+<!ATTLIST HealthData locale CDATA #REQUIRED>
+<!ELEMENT Record (MetadataEntry|HeartRateVariabilityMetadataList)*>
+<!ATTLIST Record
+  type          CDATA #REQUIRED
+  unit          CDATA #IMPLIED
+  value         CDATA #IMPLIED
+  sourceName    CDATA #REQUIRED
+  creationDate  CDATA #IMPLIED
+  startDate     CDATA #REQUIRED
+  endDate       CDATA #REQUIRED
+>
+]>
+<HealthData locale="pl_PL">
+ <ExportDate value="2026-09-01 10:00:00 +0200"/>
+ <Me HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexMale"/>
+
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple Watch" unit="count"
+         startDate="2026-08-30 08:00:00 +0200" endDate="2026-08-30 08:10:00 +0200" value="512"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple Watch" unit="count"
+         startDate="2026-08-30 19:00:00 +0200" endDate="2026-08-30 19:20:00 +0200" value="1488"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple Watch" unit="count"
+         startDate="2026-08-31 09:00:00 +0200" endDate="2026-08-31 09:30:00 +0200" value="700"/>
+
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple Watch" unit="count/min"
+         startDate="2026-08-30 08:00:00 +0200" endDate="2026-08-30 08:00:01 +0200" value="58">
+   <MetadataEntry key="HKMetadataKeyHeartRateMotionContext" value="0"/>
+ </Record>
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple Watch" unit="count/min"
+         startDate="2026-08-30 12:00:00 +0200" endDate="2026-08-30 12:00:01 +0200" value="142"/>
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple Watch" unit="count/min"
+         startDate="2026-08-30 23:00:00 +0200" endDate="2026-08-30 23:00:01 +0200" value="60"/>
+
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple Watch"
+         startDate="2026-08-30 23:30:00 +0200" endDate="2026-08-31 00:30:00 +0200"
+         value="HKCategoryValueSleepAnalysisAsleepCore"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Apple Watch"
+         startDate="2026-08-30 23:00:00 +0200" endDate="2026-08-30 23:30:00 +0200"
+         value="HKCategoryValueSleepAnalysisAwake"/>
+
+ <Record type="HKCategoryTypeIdentifierMindfulSession" sourceName="Watch"
+         startDate="2026-08-30 07:00:00 +0200" endDate="2026-08-30 07:10:00 +0200"
+         value="HKCategoryValueNotApplicable"/>
+
+ <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="30"
+          durationUnit="min" sourceName="Apple Watch"
+          startDate="2026-08-30 18:00:00 +0200" endDate="2026-08-30 18:30:00 +0200"/>
+</HealthData>

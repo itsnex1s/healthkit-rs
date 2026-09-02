@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!-- HealthKit Export Version: 14 -->
+<!ELEMENT HealthData (ExportDate?, Me?, (Record|Workout|ActivitySummary|Correlation)*)>
+<!ATTLIST HealthData locale CDATA #IMPLIED>
+]>
+<HealthData locale="pl_PL">
+  <!-- A comment in the document body: strict parsers used to trip on this -->
+  <ExportDate value="2026-09-01 21:00:00 +0200"/>
+  <Me HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexMale"
+      HKCharacteristicTypeIdentifierBloodType="HKBloodTypeNotSet"/>
+
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Watch" sourceVersion="11.2"
+    device="&lt;&lt;HKDevice: 0xabc&gt;, name:Apple Watch&gt;" unit="count/min"
+    creationDate="2026-08-20 08:00:00 +0200" startDate="2026-08-20 08:00:00 +0200"
+    endDate="2026-08-20 08:00:00 +0200" value="55">
+    <MetadataEntry key="HKMetadataKeyHeartRateMotionContext" value="1"/>
+  </Record>
+
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Watch" unit="count"
+    creationDate="2026-08-20 09:00:00 +0200" startDate="2026-08-20 08:50:00 +0200"
+    endDate="2026-08-20 09:00:00 +0200" value="640"/>
+
+  <!-- Workout with WorkoutStatistics: the element appeared in later iOS
+       versions and is missing from the only public XSD -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeCycling" duration="45.0" durationUnit="min"
+    totalDistance="12.5" totalDistanceUnit="km" totalEnergyBurned="410" totalEnergyBurnedUnit="kcal"
+    sourceName="Watch" startDate="2026-08-20 17:00:00 +0200" endDate="2026-08-20 17:45:00 +0200">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <WorkoutEvent type="HKWorkoutEventTypePause" date="2026-08-20 17:20:00 +0200"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned"
+      startDate="2026-08-20 17:00:00 +0200" endDate="2026-08-20 17:45:00 +0200"
+      sum="408.12" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate"
+      startDate="2026-08-20 17:00:00 +0200" endDate="2026-08-20 17:45:00 +0200"
+      average="131" minimum="94" maximum="169" unit="count/min"/>
+  </Workout>
+
+  <!-- Record inside Correlation. Blood pressure lives ONLY here: a parser
+       that looks at the top level only loses it entirely -->
+  <Correlation type="HKCorrelationTypeIdentifierBloodPressure" sourceName="iPhone"
+    creationDate="2026-08-20 20:00:00 +0200" startDate="2026-08-20 20:00:00 +0200"
+    endDate="2026-08-20 20:00:00 +0200">
+    <Record type="HKQuantityTypeIdentifierBloodPressureSystolic" sourceName="iPhone" unit="mmHg"
+      startDate="2026-08-20 20:00:00 +0200" endDate="2026-08-20 20:00:00 +0200" value="118"/>
+    <Record type="HKQuantityTypeIdentifierBloodPressureDiastolic" sourceName="iPhone" unit="mmHg"
+      startDate="2026-08-20 20:00:00 +0200" endDate="2026-08-20 20:00:00 +0200" value="76"/>
+  </Correlation>
+
+  <!-- appleMoveTime appeared in later iOS versions; also missing from the XSD -->
+  <ActivitySummary dateComponents="2026-08-20" activeEnergyBurned="612" activeEnergyBurnedGoal="700"
+    activeEnergyBurnedUnit="kcal" appleMoveTime="41" appleMoveTimeGoal="60"
+    appleExerciseTime="52" appleExerciseTimeGoal="30" appleStandHours="11" appleStandHoursGoal="12"/>
+
+  <!-- A night crossing midnight: belongs to the wake-up date -->
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+    startDate="2026-08-20 23:10:00 +0200" endDate="2026-08-21 02:10:00 +0200"
+    value="HKCategoryValueSleepAnalysisAsleepCore"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+    startDate="2026-08-21 02:10:00 +0200" endDate="2026-08-21 03:25:00 +0200"
+    value="HKCategoryValueSleepAnalysisAsleepDeep"/>
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+    startDate="2026-08-21 03:25:00 +0200" endDate="2026-08-21 06:25:00 +0200"
+    value="HKCategoryValueSleepAnalysisAsleepREM"/>
+</HealthData>

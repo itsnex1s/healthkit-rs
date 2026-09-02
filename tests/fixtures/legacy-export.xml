@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!-- HealthKit Export Version: 9 -->
+]>
+<HealthData locale="en_US">
+  <ExportDate value="2019-07-19 10:36:11 -0700"/>
+  <Me HKCharacteristicTypeIdentifierDateOfBirth="1990-02-02"
+      HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexNotSet"
+      HKCharacteristicTypeIdentifierBloodType="HKBloodTypeNotSet"
+      HKCharacteristicTypeIdentifierFitzpatrickSkinType="HKFitzpatrickSkinTypeNotSet"/>
+
+  <!-- A third-party scale writes BMI and attaches its own metadata -->
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Scale App"
+    sourceVersion="2160040" unit="count" creationDate="2019-04-18 17:57:19 -0700"
+    startDate="2019-04-18 08:25:32 -0700" endDate="2019-04-18 08:25:32 -0700" value="22.5">
+    <MetadataEntry key="Scale App Version" value="2.16.0"/>
+    <MetadataEntry key="HKWasUserEntered" value="0"/>
+  </Record>
+
+  <!-- The device attribute contains escaped angle brackets -->
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple Watch" sourceVersion="4.3.1"
+    device="&lt;&lt;HKDevice: 0x282a45810&gt;, name:Apple Watch, manufacturer:Apple, model:Watch, hardware:Watch2,4, software:4.3.1&gt;"
+    unit="count/min" creationDate="2019-05-10 02:47:35 -0700"
+    startDate="2019-05-10 02:28:55 -0700" endDate="2019-05-10 02:28:55 -0700" value="72">
+    <MetadataEntry key="HKMetadataKeyHeartRateMotionContext" value="0"/>
+  </Record>
+
+  <!-- Distance in miles: 2.5 mi = 4.02336 km. Exercises unit normalisation -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="24.5" durationUnit="min"
+    totalDistance="2.5" totalDistanceUnit="mi" totalEnergyBurned="310.5" totalEnergyBurnedUnit="kcal"
+    sourceName="Apple Watch" sourceVersion="3.1" creationDate="2019-06-11 07:33:49 -0700"
+    startDate="2019-06-11 07:25:41 -0700" endDate="2019-06-11 07:50:11 -0700">
+    <MetadataEntry key="HKTimeZone" value="Europe/Warsaw"/>
+    <MetadataEntry key="HKWeatherTemperature" value="14 degC"/>
+    <WorkoutRoute sourceName="iPhone" sourceVersion="10.1.1"
+      creationDate="2019-06-11 07:33:54 -0700" startDate="2019-06-11 07:25:44 -0700"
+      endDate="2019-06-11 07:50:11 -0700">
+      <FileReference path="/workout-routes/route_2019-06-11_7.25am.gpx"/>
+    </WorkoutRoute>
+  </Workout>
+
+  <!-- A second workout the same day: must add to the first -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="10.0" durationUnit="min"
+    totalDistance="1000" totalDistanceUnit="m" totalEnergyBurned="90" totalEnergyBurnedUnit="kcal"
+    sourceName="Apple Watch" startDate="2019-06-11 19:00:00 -0700" endDate="2019-06-11 19:10:00 -0700">
+    <WorkoutRoute sourceName="iPhone" startDate="2019-06-11 19:00:00 -0700"
+      endDate="2019-06-11 19:10:00 -0700">
+      <Location date="2019-06-11 19:00:00 -0700" latitude="52.2297" longitude="21.0122"
+        altitude="100.0" horizontalAccuracy="3.0" verticalAccuracy="2.0" course="-1" speed="2.5"/>
+      <Location date="2019-06-11 19:00:05 -0700" latitude="52.2298" longitude="21.0123"
+        altitude="100.2" horizontalAccuracy="3.0" verticalAccuracy="2.0" course="-1" speed="2.6"/>
+    </WorkoutRoute>
+  </Workout>
+
+  <ActivitySummary dateComponents="2019-06-11" activeEnergyBurned="590.25"
+    activeEnergyBurnedGoal="630" activeEnergyBurnedUnit="kcal" appleExerciseTime="68"
+    appleExerciseTimeGoal="30" appleStandHours="13" appleStandHoursGoal="12"/>
+  <ActivitySummary dateComponents="2019-06-12" activeEnergyBurned="323.5"
+    activeEnergyBurnedGoal="630" activeEnergyBurnedUnit="kcal" appleExerciseTime="39"
+    appleExerciseTimeGoal="30" appleStandHours="9" appleStandHoursGoal="12"/>
+</HealthData>

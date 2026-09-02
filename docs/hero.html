@@ -1,0 +1,172 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{
+  --bg:#000000; --card:#1c1c1e; --card2:#2c2c2e;
+  --ink:#ffffff; --dim:#8e8e93; --pill:#2c2c2e; --pill2:#3a3a3c;
+  --cream:#ffffff; --dark:#000000;
+  --move:#fa114f; --exercise:#92e82a; --stand:#1ad5de;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:880px;background:var(--bg);
+  font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);
+  grid-template-rows:272px 272px 252px;gap:16px;padding:40px;height:880px}
+.c{background:var(--card);border-radius:22px;padding:30px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column}
+h2{font-size:38px;line-height:1.06;letter-spacing:-.025em;font-weight:700;color:var(--ink)}
+h2.sm{font-size:32px}
+h2.xs{font-size:28px}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+.cap{font-size:13px;color:var(--dim);letter-spacing:.01em}
+.spacer{flex:1}
+
+/* A — volume */
+.a{grid-column:1/3;grid-row:1}
+.a .viz{display:flex;align-items:flex-end;gap:30px;margin-top:auto;padding-bottom:2px}
+.blob{background:linear-gradient(160deg,#3a3a3c,#242426);border-radius:14px;
+  box-shadow:0 18px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06)}
+.big{width:132px;height:104px;padding:14px 13px;display:flex;flex-direction:column;gap:4px;justify-content:flex-start}
+.big i{display:block;height:5px;border-radius:3px;background:#5c5c5e}
+.small{width:70px;height:44px;padding:11px;display:flex;flex-direction:column;gap:4px}
+.small i{display:block;height:5px;border-radius:3px;background:var(--stand);opacity:.85}
+.arrow{color:#8e8e93;font-size:24px;padding-bottom:40px}
+.lbl{margin-top:10px;text-align:center;width:132px;white-space:nowrap;font-size:12px}
+.lbl.s{width:70px}
+
+/* B — idempotency */
+.b{grid-column:3;grid-row:1}
+.rings{position:relative;width:104px;height:104px;margin:0 0 auto}
+.rg{position:absolute;border-radius:50%;border-style:solid;border-width:9px;transform:rotate(-90deg)}
+.tr{position:absolute;border-radius:50%;border-style:solid;border-width:9px}
+.i1{inset:0}
+.i2{inset:15px}
+.i3{inset:30px}
+.t1{border-color:rgba(250,17,79,.20)}
+.t2{border-color:rgba(146,232,42,.20)}
+.t3{border-color:rgba(26,213,222,.20)}
+.r1{border-color:var(--move) var(--move) transparent var(--move)}
+.r2{border-color:var(--exercise) var(--exercise) transparent transparent}
+.r3{border-color:var(--stand) transparent transparent transparent}
+
+/* C — metric rows */
+.c4{grid-column:4;grid-row:1/3}
+.rows{display:flex;flex-direction:column;gap:9px;margin-bottom:auto}
+.row{background:var(--pill);border-radius:9px;padding:11px 13px;display:flex;
+  justify-content:space-between;font-size:13px;color:#b4b4b4}
+.row.hi{background:var(--pill2);color:#efefef}
+.row b{font-weight:500}
+.row .v{font-variant-numeric:tabular-nums}
+
+/* D — sources */
+.d{grid-column:1;grid-row:2/4}
+.chips{position:relative;height:176px;margin-top:auto;margin-bottom:10px}
+.chip{position:absolute;background:linear-gradient(150deg,#3a3a3c,#2a2a2c);
+  border-radius:999px;padding:9px 17px;font-size:12px;color:#c2c2c2;
+  box-shadow:0 12px 22px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07)}
+
+/* E — wordmark */
+.e{grid-column:2/4;grid-row:2;background:var(--cream);align-items:center;
+  justify-content:center;text-align:center;padding:30px 40px}
+.word{font-size:62px;font-weight:700;letter-spacing:-.045em;color:var(--dark);
+  position:relative;display:flex;align-items:center;justify-content:center;line-height:1;
+  margin-left:-13.5px}
+/* The badge hugs the lowercase, not the line box: sized to the line box it
+   grows into a separate app icon and collides with the "t". The negative
+   margin on .word cancels the badge's own margin, which would otherwise
+   push the optical centre right. */
+.word .hl{position:relative;z-index:1;color:#fff;margin-left:17px;padding:0 7px}
+.word .hl:before{content:'';position:absolute;left:-7px;right:-7px;top:9px;bottom:2px;
+  background:var(--move);border-radius:11px;z-index:-1}
+.tag{margin-top:26px;font-size:15px;color:#6e6e73;letter-spacing:.005em;text-align:center}
+
+/* F — sleep */
+.f{grid-column:2;grid-row:3}
+.num{font-size:26px;font-weight:700;color:#6e6e73;position:relative;display:inline-block}
+.num:after{content:'';position:absolute;left:-4px;right:-4px;top:52%;height:3px;background:var(--move);opacity:.75}
+.good{font-size:26px;font-weight:700;color:var(--stand)}
+
+/* G — single binary */
+.g{grid-column:3;grid-row:3}
+.bars{display:flex;align-items:flex-end;gap:10px;margin-top:auto;height:74px}
+.bar{width:34px;border-radius:8px 8px 6px 6px;background:linear-gradient(180deg,#3a3a3c,#2c2c2e);
+  box-shadow:0 10px 18px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06)}
+
+/* H — privacy */
+.h{grid-column:4;grid-row:3}
+.lock{position:relative;width:54px;height:46px;border-radius:12px;margin-top:auto;
+  background:linear-gradient(150deg,#3a3a3c,#2c2c2e);
+  box-shadow:0 12px 22px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08)}
+.lock:before{content:'';position:absolute;left:50%;top:-17px;width:26px;height:26px;
+  margin-left:-13px;border:7px solid #48484a;border-radius:50%;border-bottom-color:transparent;
+  box-sizing:border-box}
+.lock:after{content:'';position:absolute;left:50%;top:16px;width:8px;height:11px;
+  margin-left:-4px;border-radius:5px;background:var(--stand)}
+</style></head><body>
+<div class="grid">
+
+  <div class="c a">
+    <h2>Gigabytes in,<br>kilobytes out</h2>
+    <div class="viz">
+      <div>
+        <div class="blob big"><i style="width:88%"></i><i style="width:64%"></i><i style="width:92%"></i><i style="width:71%"></i><i style="width:84%"></i><i style="width:58%"></i></div>
+        <div class="cap mono lbl">export.xml&nbsp;·&nbsp;176 MB</div>
+      </div>
+      <div class="arrow">→</div>
+      <div>
+        <div class="blob small"><i style="width:70%"></i><i style="width:46%"></i></div>
+        <div class="cap mono lbl s">696 KB</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c b">
+    <div class="rings"><div class="tr t1 i1"></div><div class="tr t2 i2"></div><div class="tr t3 i3"></div><div class="rg r1 i1"></div><div class="rg r2 i2"></div><div class="rg r3 i3"></div></div>
+    <h2 class="sm">Re-import<br>changes<br>nothing</h2>
+  </div>
+
+  <div class="c c4">
+    <div class="rows">
+      <div class="row"><b class="mono" style="color:var(--exercise)">StepCount</b><span class="mono v">9 412</span></div>
+      <div class="row hi"><b class="mono" style="color:var(--move)">HeartRate</b><span class="mono v">58 avg</span></div>
+      <div class="row"><b class="mono" style="color:var(--stand)">SleepREM</b><span class="mono v">1h 42m</span></div>
+      <div class="row"><b class="mono" style="color:var(--move)">HRV SDNN</b><span class="mono v">64 ms</span></div>
+    </div>
+    <h2 class="sm">One row<br>per metric,<br>per day</h2>
+  </div>
+
+  <div class="c d">
+    <h2 class="sm">iPhone and Watch,<br>counted once</h2>
+    <div class="chips">
+      <div class="chip mono" style="left:2px;top:104px;transform:rotate(-13deg)">iPhone · 8 012</div>
+      <div class="chip mono" style="left:36px;top:52px;transform:rotate(-9deg);opacity:.72">Watch · 9 412</div>
+      <div class="chip mono" style="left:14px;top:6px;transform:rotate(-16deg);opacity:.4">iPhone · 8 012</div>
+    </div>
+    <div class="cap" style="margin-top:0">cumulative metrics keep one source</div>
+  </div>
+
+  <div class="c e">
+    <div class="word">healthkit<span class="hl">-rs</span></div>
+    <div class="tag">apple health export, distilled</div>
+  </div>
+
+  <div class="c f">
+    <h2 class="xs">Overlaps merged,<br>not summed</h2>
+    <div class="spacer"></div>
+    <div style="display:flex;align-items:baseline;gap:16px;white-space:nowrap"><span class="num mono">351 h</span><span style="color:#8e8e93;font-size:20px">→</span><span class="good mono">7.0 h</span></div>
+    <div class="cap" style="margin-top:8px">one night, 98 records</div>
+  </div>
+
+  <div class="c g">
+    <h2 class="xs">Single binary.<br>No runtime.</h2>
+    <div class="bars"><div class="bar" style="height:74px;background:linear-gradient(180deg,var(--stand),#0f9aa1)"></div><div class="bar" style="height:44px;opacity:.66"></div><div class="bar" style="height:26px;opacity:.42"></div></div>
+    <div class="cap mono" style="margin-top:11px">no interpreter, no deps</div>
+  </div>
+
+  <div class="c h">
+    <h2 class="xs">Nothing leaves<br>the machine</h2>
+    <div class="lock"></div>
+    <div class="cap" style="margin-top:12px">no network, no telemetry</div>
+  </div>
+
+</div>
+</body></html>

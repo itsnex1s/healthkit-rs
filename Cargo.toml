@@ -1,0 +1,22 @@
+[package]
+name = "healthkit-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Apple Health export.zip to daily aggregates in SQLite"
+license = "MIT"
+repository = "https://github.com/itsnex1s/healthkit-rs"
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["std"] }
+clap = { version = "4", features = ["derive"] }
+quick-xml = "0.37"
+rusqlite = { version = "0.32", features = ["bundled"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[dev-dependencies]
+rusqlite = { version = "0.32", features = ["bundled"] }

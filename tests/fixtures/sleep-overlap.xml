@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!-- HealthKit Export Version: 13 -->
+]>
+<HealthData locale="zh_CN">
+ <ExportDate value="2024-01-18 22:00:00 +0800"/>
+ <!-- Reproduces a real export: the same "in bed" episode written four times
+      byte-identically, plus two overlapping ones. Naive summing gives
+      20 hours instead of 7. -->
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Sleep"
+         startDate="2024-01-16 00:09:00 +0800" endDate="2024-01-16 03:42:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Sleep"
+         startDate="2024-01-16 00:09:00 +0800" endDate="2024-01-16 03:42:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Sleep"
+         startDate="2024-01-16 00:09:00 +0800" endDate="2024-01-16 03:42:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Sleep"
+         startDate="2024-01-16 00:09:00 +0800" endDate="2024-01-16 03:42:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+         startDate="2024-01-16 03:00:00 +0800" endDate="2024-01-16 06:00:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+         startDate="2024-01-16 06:00:00 +0800" endDate="2024-01-16 07:09:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+ <!-- A separate nap, not adjacent: must remain a second interval -->
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Watch"
+         startDate="2024-01-16 14:00:00 +0800" endDate="2024-01-16 14:30:00 +0800"
+         value="HKCategoryValueSleepAnalysisInBed"/>
+</HealthData>

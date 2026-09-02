@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HealthData locale="pl_PL">
+ <ExportDate value="2026-09-01 10:00:00 +0200"/>
+ <!-- One day, two sources: the iPhone counts steps from its accelerometer,
+      the Watch counts its own. Adding them doubles the day. -->
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="iPhone" unit="count"
+         startDate="2026-08-30 09:00:00 +0200" endDate="2026-08-30 09:10:00 +0200" value="3000"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="iPhone" unit="count"
+         startDate="2026-08-30 18:00:00 +0200" endDate="2026-08-30 18:10:00 +0200" value="5000"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple Watch" unit="count"
+         startDate="2026-08-30 09:00:00 +0200" endDate="2026-08-30 09:10:00 +0200" value="3500"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Apple Watch" unit="count"
+         startDate="2026-08-30 18:00:00 +0200" endDate="2026-08-30 18:10:00 +0200" value="6000"/>
+ <!-- Heart rate is instantaneous: sources complement each other, so merge them -->
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="iPhone" unit="count/min"
+         startDate="2026-08-30 09:00:00 +0200" endDate="2026-08-30 09:00:01 +0200" value="70"/>
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Apple Watch" unit="count/min"
+         startDate="2026-08-30 18:00:00 +0200" endDate="2026-08-30 18:00:01 +0200" value="90"/>
+</HealthData>
