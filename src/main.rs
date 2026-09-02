@@ -62,6 +62,12 @@ fn main() -> Result<()> {
         xml::ingest(BufReader::new(entry), &mut conn)?
     };
 
+    if stats.truncated {
+        eprintln!(
+            "warning: the XML ends mid-element — everything before that point was kept.\n\
+             Apple's export does this; re-exporting from the phone usually fixes it."
+        );
+    }
     println!(
         "read: {} records, {} workouts, {} summaries ({} skipped)",
         stats.records, stats.workouts, stats.summaries, stats.skipped

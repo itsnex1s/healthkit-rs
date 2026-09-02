@@ -40,6 +40,10 @@ const CUMULATIVE: &[&str] = &[
 ];
 
 pub struct Stats {
+    /// The file ended in the middle of an element. Apple's own export does
+    /// this: the archive is intact and the XML inside it is cut short. Losing
+    /// everything parsed before that point would be the wrong answer.
+    pub truncated: bool,
     pub records: u64,
     pub workouts: u64,
     pub summaries: u64,
@@ -163,14 +167,22 @@ pub fn ingest<R: BufRead>(input: R, conn: &mut Connection) -> Result<Stats> {
     let mut s = Sink::default();
     let (mut records, mut workouts, mut summaries, mut skipped) = (0u64, 0u64, 0u64, 0u64);
 
+    let mut truncated = false;
     loop {
         // Empty and Start are handled the same way: only attributes matter.
         // A Record inside Correlation lands here too, which is correct —
         // otherwise blood pressure, which lives only there, would be lost.
-        let ev = match reader.read_event_into(&mut buf)? {
-            Event::Empty(e) | Event::Start(e) => Some(e.to_owned()),
-            Event::Eof => break,
-            _ => None,
+        let ev = match reader.read_event_into(&mut buf) {
+            Ok(Event::Empty(e)) | Ok(Event::Start(e)) => Some(e.to_owned()),
+            Ok(Event::Eof) => break,
+            Ok(_) => None,
+            // A cut-off element at the end of the input. Everything before it
+            // is still good, so keep it and say so.
+            Err(quick_xml::Error::IllFormed(_)) | Err(quick_xml::Error::Syntax(_)) => {
+                truncated = true;
+                break;
+            }
+            Err(e) => return Err(e.into()),
         };
         if let Some(e) = ev {
             match e.name().as_ref() {
@@ -217,6 +229,7 @@ pub fn ingest<R: BufRead>(input: R, conn: &mut Connection) -> Result<Stats> {
         .context("activity_summary")?;
 
     Ok(Stats {
+        truncated,
         records,
         workouts,
         summaries,
